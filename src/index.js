@@ -9,6 +9,7 @@ import {
 } from 'react-query';
 
 import './index.css';
+import { NewsContextProvider } from './context/NewsContextProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -17,9 +18,11 @@ const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <NewsContextProvider value={{ newsList: [] }}>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </NewsContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

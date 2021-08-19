@@ -1,10 +1,15 @@
+import React, { useContext } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 
 import { getNews } from '../services/api';
+import { NewsContext } from '../context/NewsContextProvider';
 
 export default function HomePage() {
   const { isLoading, isError, data, error } = useQuery('homeNews', getNews);
+
+  const newsContext = useContext(NewsContext);
+  console.log(newsContext);
 
   if (isLoading) {
     return <span>Loading...</span>;
