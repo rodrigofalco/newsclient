@@ -18,7 +18,7 @@ o bootstrap?
 - API Fetching.
   React Query https://react-query.tanstack.com/overview
 
-- Theme
+- xTheme
   -- Dark mode/Light mode
 
 - Responsivenes

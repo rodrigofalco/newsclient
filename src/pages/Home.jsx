@@ -1,4 +1,6 @@
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
+
 import { getNews } from '../services/api';
 
 export default function HomePage() {
@@ -17,8 +19,10 @@ export default function HomePage() {
 
   return (
     <ul>
-      {data.articles.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
+      {data.articles.map((todo, index) => (
+        <li key={todo.id}>
+          <Link to={`/news/${index}`}>{todo.title}</Link>{' '}
+        </li>
       ))}
     </ul>
   );
