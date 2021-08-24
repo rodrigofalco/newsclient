@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 
-import { getNews } from '../services/api';
+import { getNews, getNewsQueryOptions } from '../services/api';
 import { NewsContext } from '../context/NewsContextProvider';
 
 export default function HomePage() {
-  const { isLoading, isError, data, error } = useQuery('homeNews', getNews);
+  const { isLoading, isError, data, error } = useQuery(
+    'homeNews',
+    getNews,
+    getNewsQueryOptions
+  );
 
   const newsContext = useContext(NewsContext);
   console.log(newsContext);
@@ -25,7 +29,7 @@ export default function HomePage() {
   return (
     <ul>
       {data.articles.map((todo, index) => (
-        <li key={todo.id}>
+        <li key={index}>
           <Link to={`/news/${index}`}>{todo.title}</Link>{' '}
         </li>
       ))}

@@ -9,3 +9,11 @@ export async function getNews() {
     `${API_BASE_URL}/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}`
   ).then((res) => res.json());
 }
+
+export function getNewsQueryOptions() {
+  return {
+    enbled: false,
+    staleTime: 300000,
+    refetchOnMount: false,
+  };
+}
