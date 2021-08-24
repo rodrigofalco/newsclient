@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom';
 import { getNews, getNewsQueryOptions } from '../services/api';
 import { NewsContext } from '../context/NewsContextProvider';
 
-export default function HomePage() {
+export default function HomePage(props) {
+  const { searchText } = props;
+  console.log('Rendering home');
+  console.log(searchText);
   const { isLoading, isError, data, error } = useQuery(
-    'homeNews',
-    getNews,
+    ['homeNews', searchText],
+    () => getNews(searchText),
     getNewsQueryOptions
   );
 
-  const newsContext = useContext(NewsContext);
-  console.log(newsContext);
+  // const newsContext = useContext(NewsContext);
+  //console.log(newsContext);
 
   if (isLoading) {
     return <span>Loading...</span>;
