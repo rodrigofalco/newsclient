@@ -20,7 +20,7 @@ export default function App() {
             <NewsPage searchText={searchText} />
           </Route>
           <Route path="/category/:categorySlug">
-            <CategoryPage />
+            <CategoryPage searchText={searchText} />
           </Route>
           <Route path="/">
             <HomePage searchText={searchText} />
