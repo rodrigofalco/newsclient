@@ -1,3 +1,4 @@
+import { CircularProgress } from '@material-ui/core';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,7 @@ export default function HomePage(props) {
   );
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <CircularProgress />;
   }
 
   if (isError) {
